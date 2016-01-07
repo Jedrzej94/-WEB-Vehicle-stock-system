@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 `first_name` varchar(12) NOT NULL,
 `last_name` varchar(12) NOT NULL,
 `accesslvl` tinyint(4) NOT NULL,
-`banned` tinyint(4) NOT NULL,
+`status` tinyint(4) NOT NULL,
 PRIMARY KEY (`uid`)
 )
 ```
