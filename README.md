@@ -14,3 +14,25 @@ First of all, you will need your database sorted, please download WAMP or LAMP s
 
 - Windows server (WAMP): http://www.wampserver.com/en/#download-wrapper
 - Linux server (LAMP): https://bitnami.com/stack/lamp/installer
+
+Make sure that you run this SQL code first in order to create:
+
+1. User table list:
+
+```
+CREATE TABLE IF NOT EXISTS `users` (
+`uid` int(11) NOT NULL AUTO_INCREMENT,
+`username` varchar(16) NOT NULL,
+`password` varchar(64) NOT NULL,
+`email` varchar(24) NOT NULL,
+`first_name` varchar(12) NOT NULL,
+`last_name` varchar(12) NOT NULL,
+`accesslvl` tinyint(4) NOT NULL,
+`banned` tinyint(4) NOT NULL,
+PRIMARY KEY (`uid`)
+)
+```
+
+2. Vehicle table list:
+* still editing everything to get ready *
+
