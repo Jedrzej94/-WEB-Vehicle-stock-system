@@ -34,5 +34,5 @@ PRIMARY KEY (`uid`)
 ```
 
 2. Vehicle table list:
-* still editing everything to get ready *
+*still editing everything to get ready*
 
