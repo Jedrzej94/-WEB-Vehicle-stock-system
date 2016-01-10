@@ -3,6 +3,7 @@ ___________________________________
 This is more advanced system that I had to develop as my assignment back in UK when I have lived there. It is a WEB vehicle system, which is including:
 
 - Databases (accounts, vehicles).
+- DRY - programming rules.
 - User login system, sign in & sign up using database (with password hashing).
 - Basic maintain functions such as: add, amend, delete, view etc.
 - Different permissions depending on the admin (user's) level.
@@ -71,6 +72,7 @@ This part is pretty much self descriptive. It is holding our Database informatio
 
 https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/config.php
 
+-
 **SIGN IN & SIGN UP**
 
 User object class: https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/class_user.php
@@ -135,6 +137,7 @@ NOT all the fields are necessary to be insterted when signing up, some of them c
 This whole system is based on the SQL language, so all the accounts are automatically created in our database which was described at the very beginning of the whole ReadMe file. It is a dynamic user login and register system. Picture below is showing created users in database.
 ![userDB](/master/images/usersdb.jpg)
 
+-
 **HOME PAGE**
 
 As soon as we get signed in, we are getting redirected to the main website, which is a home page. At home page we are given a FIXED navigation menu and a FIXED top bar which has some functions on the left and the right side. A good thing about fixed menu's is that whenever user's scrolling down the page, menu is always going to stick on the screen and it won't move anywhere from there. So it is easier for user to navigate through the website.
@@ -174,6 +177,34 @@ $menu = array(
   'about' 		=> array('text' => 'About', 			'url' => '?p=about',		'pageaccesslvl' => '0'),
   'mainstock'	=> array('text' => 'Maintain stock',	'url' => '?p=mainstock',	'pageaccesslvl' => '1'), // Required access level: 1 (administrator of level 1).
 );
+
+class class_UserNavigationMenu
+{
+	public static function GenerateMenu($items) 
+	{	
+		// User's UID is necessary in order to provide SQL results for the website and query anything to the database.
+		$user_uid = $_SESSION['user_session'];
+		$result = $GLOBALS['MYSQL_HANDLE']->query("SELECT `accesslvl` FROM `users` WHERE uid = '".$user_uid."'"); // Another Super global PHP's variable $GLOBALS.
+		$row = $result->fetch_assoc();
+		$html = "<nav class = 'navbar'>\n";
+		foreach($items as $key => $item) 
+		{
+			$selected = (isset($_GET['p'])) && $_GET['p'] == $key ? 'selected' : null;
+			
+			if($item['pageaccesslvl'] > $row['accesslvl'])
+			{
+				continue;
+			}
+			
+			else
+			{
+				$html .= "<a href = '{$item['url']}' class = '{$selected}' > {$item['text']}</a>\n";
+			}
+		}
+		$html .= "</nav>\n";
+		return $html;
+	}
+};
 ```
 
 * HTML part
