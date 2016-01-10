@@ -8,6 +8,7 @@ This is more advanced system that I had to develop as my assignment back in UK w
 - Different permissions depending on the admin (user's) level.
 - Folder creation with removing functionality including removing folders which contain data in it.
 - Dynamic navigation bar creation.
+- objective programming.
 
 # Database
 ___________________________________
