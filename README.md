@@ -73,10 +73,11 @@ This part is pretty much self descriptive. It is holding our Database informatio
 https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/config.php
 
 -
-**SIGN IN, SIGN UP, SIGN OUT**
+**SIGN IN - SIGN UP - SIGN OUT**
 
 User object class: https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/class_user.php
 
+*SIGN IN*
 First of all, in order to access the page you have to be logged in. So, if user will be redirected to the sign in webpage where user will be allowed to enter his username/e-mail address and password in order to log in. 
 ![SignIn](/master/images/signin.jpg)
 https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/signin.php
@@ -114,10 +115,10 @@ public function login($uname, $upass, $umail)
 }
 ```
 
+*SIGN UP*
 If user doesn't have an account he's going to need one. In order to get to this webpage, user will have to press a referece text under sign in form and will get redirected to the signup webpage.
 ![SignUp](/master/images/signup.jpg)
 https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/signup.php
-
 ```
 public function register($uname, $upass, $umail, $ufname, $ulname)
 {
@@ -137,7 +138,9 @@ NOT all the fields are necessary to be insterted when signing up, some of them c
 This whole system is based on the SQL language, so all the accounts are automatically created in our database which was described at the very beginning of the whole ReadMe file. It is a dynamic user login and register system. Picture below is showing created users in database.
 ![userDB](/master/images/usersdb.jpg)
 
+*SIGN OUT*
 https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/logout.php
+```
 <?php
 	include_once 'config.php';
 	
@@ -148,6 +151,7 @@ https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/l
 		$user->redirect('signin.php');
 	}
 ?>
+```
 
 -
 **HOME PAGE**
