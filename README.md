@@ -162,6 +162,20 @@ $row = $result->fetch_assoc();
 ?>
 ```
 
+Navigation bar object class.
+https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/class_navbar.php
+```
+/* Default website's navigation menu which holds Home, News, Contact and About pages. Maintain stock webpage is only shown for user with certain access level. It can be clearly read from the array below. */
+
+$menu = array(
+  'home'  		=> array('text' => 'Home',  			'url' => '?p=home',			'pageaccesslvl' => '0'),
+  'news'  		=> array('text' => 'News',  			'url' => '?p=news',			'pageaccesslvl' => '0'),
+  'contact'  	=> array('text' => 'Contact',  			'url' => '?p=contact',		'pageaccesslvl' => '0'),
+  'about' 		=> array('text' => 'About', 			'url' => '?p=about',		'pageaccesslvl' => '0'),
+  'mainstock'	=> array('text' => 'Maintain stock',	'url' => '?p=mainstock',	'pageaccesslvl' => '1'), // Required access level: 1 (administrator of level 1).
+);
+```
+
 * HTML part
 ```
 <head>
@@ -225,19 +239,6 @@ https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/p
 	
 </body>
 </html>
-```
-
-
-```
-/* Default website's navigation menu which holds Home, News, Contact and About pages. Maintain stock webpage is only shown for user with certain access level. It can be clearly read from the array below. */
-
-$menu = array(
-  'home'  		=> array('text' => 'Home',  			'url' => '?p=home',			'pageaccesslvl' => '0'),
-  'news'  		=> array('text' => 'News',  			'url' => '?p=news',			'pageaccesslvl' => '0'),
-  'contact'  	=> array('text' => 'Contact',  			'url' => '?p=contact',		'pageaccesslvl' => '0'),
-  'about' 		=> array('text' => 'About', 			'url' => '?p=about',		'pageaccesslvl' => '0'),
-  'mainstock'	=> array('text' => 'Maintain stock',	'url' => '?p=mainstock',	'pageaccesslvl' => '1'), // Required access level: 1 (administrator of level 1).
-);
 ```
 ![SignUp](/master/images/home.jpg)
 
