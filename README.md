@@ -436,5 +436,7 @@ This code is simply calling a function in the VEHICLE class called "printVehicle
 </body>
 </html>
 ```
+![print](/master/images/printstock.jpg)
+
 
 Please check code's itself for more description about the code.
