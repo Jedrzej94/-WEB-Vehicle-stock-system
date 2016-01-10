@@ -9,6 +9,7 @@ This is more advanced system that I had to develop as my assignment back in UK w
 - Folder creation & removing (with functionality to remove folders which contain data in it).
 - Dynamic navigation bar creation (with two CSS styles to be chosen).
 - String processing.
+- PHP procedures with PHP super-global variables.
 - Objective programming.
 
 # Database
