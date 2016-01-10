@@ -187,17 +187,18 @@ class class_UserNavigationMenu
 		$result = $GLOBALS['MYSQL_HANDLE']->query("SELECT `accesslvl` FROM `users` WHERE uid = '".$user_uid."'"); // Another Super global PHP's variable $GLOBALS.
 		$row = $result->fetch_assoc();
 		$html = "<nav class = 'navbar'>\n";
-		foreach($items as $key => $item) 
+		foreach($items as $key => $item) // Iterating through items of the navigation menu.
 		{
-			$selected = (isset($_GET['p'])) && $_GET['p'] == $key ? 'selected' : null;
+			$selected = (isset($_GET['p'])) && $_GET['p'] == $key ? 'selected' : null; // Checking selected option. This line of code is called a conditional expression. It is a shorted way of if/else procedure.
 			
-			if($item['pageaccesslvl'] > $row['accesslvl'])
+			if($item['pageaccesslvl'] > $row['accesslvl']) // That's why we needed to access user's database, in order to check user's access level and make sure to show them Maintain stock option or any other navigation menu item which is available for them at certain level.
 			{
 				continue;
 			}
 			
 			else
 			{
+				// Gluing together all the navigation menu parts.
 				$html .= "<a href = '{$item['url']}' class = '{$selected}' > {$item['text']}</a>\n";
 			}
 		}
@@ -256,9 +257,8 @@ class class_UserNavigationMenu
 </html>
 ```
 
-File including is a great feature if you don't want your page to be reloaded and just want to keep your files nice and clean. What I mean by that, here we have a DRY programming rule which stands from Don't Repeat Yourself. A great thing about that is we don't have to create the navigation bar for each webpage anymore, we can just simply do:
+File including is a great feature if you don't want your page to be reloaded and just want to keep your files nice and clean. What I mean by that, here we have a DRY programming rule which stands for Don't Repeat Yourself. A great thing about that is we don't have to create the navigation bar for each webpage anymore, we can just simply do:
 
-https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/pages/index/home.php
 ```
 <body>
 
@@ -271,6 +271,9 @@ https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/p
 </body>
 </html>
 ```
+https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/pages/index/home.php
+
+for each of our webpages. Image below to show how it looks like in action:
 ![SignUp](/master/images/home.jpg)
 
 
