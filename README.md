@@ -165,7 +165,8 @@ $row = $result->fetch_assoc();
 ?>
 ```
 
-Navigation bar object class.
+Navigation bar object class:
+
 https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/class_navbar.php
 ```
 /* Default website's navigation menu which holds Home, News, Contact and About pages. Maintain stock webpage is only shown for user with certain access level. It can be clearly read from the array below. */
