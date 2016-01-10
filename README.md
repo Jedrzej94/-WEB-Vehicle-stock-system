@@ -77,10 +77,10 @@ https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/c
 
 User object class: https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/class_user.php
 
-*SIGN IN*
+
+*SIGN IN* - https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/signin.php
 First of all, in order to access the page you have to be logged in. So, if user will be redirected to the sign in webpage where user will be allowed to enter his username/e-mail address and password in order to log in. 
 ![SignIn](/master/images/signin.jpg)
-https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/signin.php
 
 ```
 public function login($uname, $upass, $umail)
