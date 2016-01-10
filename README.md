@@ -111,6 +111,7 @@ public function login($uname, $upass, $umail)
 
 If user doesn't have an account he's going to need one. In order to get to this webpage, user will have to press a referece text under sign in form and will get redirected to the signup webpage.
 ![SignUp](/master/images/signup.jpg)
+
 ```
 public function register($uname, $upass, $umail, $ufname, $ulname)
 {
@@ -134,6 +135,69 @@ This whole system is based on the SQL language, so all the accounts are automati
 
 As soon as we get signed in, we are getting redirected to the main website, which is a home page. At home page we are given a FIXED navigation menu and a FIXED top bar which has some functions on the left and the right side. A good thing about fixed menu's is that whenever user's scrolling down the page, menu is always going to stick on the screen and it won't move anywhere from there. So it is easier for user to navigate through the website.
 
+* PHP
+```
+<?php
+
+// First, code is trying to initialize a configuration and object (user) creation with object (navigation bar) as well.
+include_once 'config.php';
+include_once 'class_navbar.php';
+
+// If user is not logged in, he will be redirected to the signin page. It is a security question, to do not let people change the webpages through the URL bars.
+if(!$user->IsUserLoggedIn())
+{
+$user->redirect('signin.php');
+}
+
+// Fetching for the all data about user from the database.
+$user_uid = $_SESSION['user_session'];
+$result = $MYSQL_HANDLE->query("SELECT * FROM `users` WHERE uid = '".$user_uid."'");
+$row = $result->fetch_assoc();
+?>
+```
+
+* HTML part
+```
+<head>
+	<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
+	<link rel = "stylesheet" href = "style.css" type = "text/css" />
+	<title>Welcome - <?php print($row['email']); ?></title>
+	
+	<?php echo class_UserNavigationMenu::GenerateMenu($menu); ?>
+	<div class = "header">
+	
+		<div class = "left">  <label><a href = "https://github.com/Jedrzej94/">github.com</a></label> </div>
+		<div class = "right"> <label><a href = "logout.php?logout=true">Logged in as <?php print($row['username']); ?> (sign out)</a></label> </div>
+		
+	</div>
+</head>
+
+<body>
+	<div class = "content">
+		
+		<?php 
+		
+			if(isset($_GET['p']))
+			{
+				switch($_GET['p'])
+				{
+					case "home":		include("pages\index\home.php"); break;
+					case "news":		include("pages\index\\news.php"); break;
+					case "contact":		include("pages\index\contact.php"); break;
+					case "about":		include("pages\index\about.php"); break;
+					case "mainstock":	header("Location: pages\\vehicles\mainstock.php"); break;
+					
+					default:			include("index.php"); break;
+				}
+			}
+		
+		 ?>
+		
+	</div>
+</body>
+</html>
+```
+
 ```
 /* Default website's navigation menu which holds Home, News, Contact and About pages. Maintain stock webpage is only shown for user with certain access level. It can be clearly read from the array below. */
 
@@ -145,6 +209,6 @@ $menu = array(
   'mainstock'	=> array('text' => 'Maintain stock',	'url' => '?p=mainstock',	'pageaccesslvl' => '1'), // Required access level: 1 (administrator of level 1).
 );
 ```
-
+![SignUp](/master/images/home.jpg)
 
 
