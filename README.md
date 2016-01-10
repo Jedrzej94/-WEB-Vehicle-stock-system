@@ -10,6 +10,7 @@ This is more advanced system that I had to develop as my assignment back in UK w
 - Dynamic navigation bar creation (with two CSS styles to be chosen).
 - String processing.
 - PHP procedures with PHP super-global variables.
+- Security functions such as trim, strip etc.
 - Objective programming.
 
 # Database
@@ -59,4 +60,17 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
 PRIMARY KEY (`uid`)
 )
 ```
-![My image](/master/images/addstock.jpg)
+
+# Description
+___________________________________
+
+First of all, in order to access the page you have to be logged in. So, if user will be redirected to the sign in webpage where user will be allowed to enter his username/e-mail address and password in order to log in. 
+![SignIn](/master/images/signin.jpg)
+
+If user doesn't have an account he's going to need one. In order to get to this webpage, user will have to press a referece text under sign in form and will get redirected to the signup webpage.
+![SignUp](/master/images/signup.jpg)
+
+
+
+
+
