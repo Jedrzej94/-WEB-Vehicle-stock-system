@@ -406,5 +406,35 @@ HTML:
 ![SignUp](/master/images/addstock.jpg)
 
 
-* *AMEND* (https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/pages/vehicles/amendstock.php)
-Amend code is using pretty much the same code as ADD but with only difference that we are reading data from database and INSERTING it into fields for user to be changed.
+* *AMEND* 
+(https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/pages/vehicles/amendstock.php)
+
+Amend code is using pretty much the same code as ADD but with only difference that we are reading data from database and INSERTING it into fields for user to be changed. First of all, when we are trying to call Amend code, first we are being prompted by script to enter vehicle's number plate (registration number). If we don't know it, we can simply use a PRINT item from the navigation menu.
+
+Please check this code for the SEARCH code:
+https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/pages/vehicles/searchstock.php
+
+Most of the code is based on the SEARCH functions.
+
+* *PRINT*
+https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/pages/vehicles/printstock.php
+
+This code is simply calling a function in the VEHICLE class called "printVehicles();"
+
+```
+<body>
+
+	<?php
+	
+		include_once '../../config.php';
+		include_once '../../class_vehicle.php';
+		$vehicle = new VEHICLE($MYSQL_HANDLE);
+		$vehicle->printVehicles();
+		
+	?>
+	
+</body>
+</html>
+```
+
+Please check code's itself for more description about the code.
