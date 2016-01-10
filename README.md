@@ -72,9 +72,11 @@ This part is pretty much self descriptive. It is holding our Database informatio
 https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/config.php
 
 **SIGN IN & SIGN UP**
+User object class: https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/class_user.php
 
 First of all, in order to access the page you have to be logged in. So, if user will be redirected to the sign in webpage where user will be allowed to enter his username/e-mail address and password in order to log in. 
 ![SignIn](/master/images/signin.jpg)
+https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/signin.php
 
 ```
 public function login($uname, $upass, $umail)
@@ -111,6 +113,7 @@ public function login($uname, $upass, $umail)
 
 If user doesn't have an account he's going to need one. In order to get to this webpage, user will have to press a referece text under sign in form and will get redirected to the signup webpage.
 ![SignUp](/master/images/signup.jpg)
+https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/signup.php
 
 ```
 public function register($uname, $upass, $umail, $ufname, $ulname)
@@ -134,6 +137,8 @@ This whole system is based on the SQL language, so all the accounts are automati
 **HOME PAGE**
 
 As soon as we get signed in, we are getting redirected to the main website, which is a home page. At home page we are given a FIXED navigation menu and a FIXED top bar which has some functions on the left and the right side. A good thing about fixed menu's is that whenever user's scrolling down the page, menu is always going to stick on the screen and it won't move anywhere from there. So it is easier for user to navigate through the website.
+
+https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/index.php
 
 * PHP
 ```
@@ -159,44 +164,68 @@ $row = $result->fetch_assoc();
 * HTML part
 ```
 <head>
-	<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
-	<link rel = "stylesheet" href = "style.css" type = "text/css" />
-	<title>Welcome - <?php print($row['email']); ?></title>
+<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
+<link rel = "stylesheet" href = "style.css" type = "text/css" />
+<title>Welcome - <?php print($row['email']); ?></title>
+
+<!-- Creating our navigation bar with the reference to the '$menu' variable. -->
+<?php echo class_UserNavigationMenu::GenerateMenu($menu); ?>
+
+<!-- Creation of the top blue bar with two buttons on it with the reference to my github page and to log out from the session -->
+<div class = "header">
+
+	<div class = "left">  <label><a href = "https://github.com/Jedrzej94/">github.com</a></label> </div>
+	<div class = "right"> <label><a href = "logout.php?logout=true">Logged in as <?php print($row['username']); ?> (sign out)</a></label> </div>
 	
-	<?php echo class_UserNavigationMenu::GenerateMenu($menu); ?>
-	<div class = "header">
-	
-		<div class = "left">  <label><a href = "https://github.com/Jedrzej94/">github.com</a></label> </div>
-		<div class = "right"> <label><a href = "logout.php?logout=true">Logged in as <?php print($row['username']); ?> (sign out)</a></label> </div>
-		
-	</div>
+</div>
 </head>
 
 <body>
-	<div class = "content">
-		
-		<?php 
-		
-			if(isset($_GET['p']))
-			{
-				switch($_GET['p'])
-				{
-					case "home":		include("pages\index\home.php"); break;
-					case "news":		include("pages\index\\news.php"); break;
-					case "contact":		include("pages\index\contact.php"); break;
-					case "about":		include("pages\index\about.php"); break;
-					case "mainstock":	header("Location: pages\\vehicles\mainstock.php"); break;
-					
-					default:			include("index.php"); break;
-				}
-			}
-		
-		 ?>
-		
-	</div>
+
+<!-- Opening the body tag and starting inserting the content of the index.php -->
+<div class = "content">
+	
+<?php 
+
+<!-- Checking if user has a 'p' tag in his URL bar, which stands from PAGE -->
+	if(isset($_GET['p']))
+	{
+	<!-- It is allowing us to check which item user has chosen from the navigation menu and load appropriate file -->
+		switch($_GET['p'])
+		{
+			case "home":		include("pages\index\home.php"); break;		<!-- Great thing about INCLUDING PHP file instead of redirecting user to the file is described below. -->
+			case "news":		include("pages\index\\news.php"); break;
+			case "contact":		include("pages\index\contact.php"); break;
+			case "about":		include("pages\index\about.php"); break;
+			case "mainstock":	header("Location: pages\\vehicles\mainstock.php"); break;
+			
+			default:			include("index.php"); break;
+		}
+	}
+
+ ?>
+	
+</div>
 </body>
 </html>
 ```
+
+File including is a great feature if you don't want your page to be reloaded and just want to keep your files nice and clean. What I mean by that, here we have a DRY programming rule which stands from Don't Repeat Yourself. A great thing about that is we don't have to create the navigation bar for each webpage anymore, we can just simply do:
+
+https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/pages/index/home.php
+```
+<body>
+
+	<div class = "content">
+	
+		<h1>Home page</h1>
+		 
+	</div>
+	
+</body>
+</html>
+```
+
 
 ```
 /* Default website's navigation menu which holds Home, News, Contact and About pages. Maintain stock webpage is only shown for user with certain access level. It can be clearly read from the array below. */
