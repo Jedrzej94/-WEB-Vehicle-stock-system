@@ -306,3 +306,51 @@ This file has pretty much the same code as index.php, it had to be done again be
 
 -
 **ADD - AMEND - DELETE - SEARCH - PRINT**
+
+* *ADD* (https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/pages/vehicles/addstock.php)
+Adding a new stock to the database is very important, this kind of vehicle stock system could be used as reference to the real website like autotrader, where people sell their vehicles etc. Administrator has an option to add a vehicle.
+
+PHP:
+```
+<?php
+	if(isset($_POST['btn-addveh']))
+	{
+		// This part of the PHP code is called only when user has pressed "Add" button with the vehicle details in.
+		// It is trimming user's input from all the html tags etc. to avoid them calling code from their side.
+		$numplate 	= trim($_POST['inp_numplate']);
+		$make 		= trim($_POST['inp_make']);
+		$model 		= trim($_POST['inp_model']);
+		$engine 	= trim($_POST['inp_engine']);
+		$mileage	= trim($_POST['inp_mileage']);
+		$year		= trim($_POST['inp_year']);
+		$color		= trim($_POST['inp_color']);
+		$bodytype	= trim($_POST['inp_bodytype']);
+		$doors		= trim($_POST['inp_doors']);
+		$fueltype	= trim($_POST['inp_fueltype']);
+		$geartype	= trim($_POST['inp_geartype']);
+		$price		= trim($_POST['inp_price']);
+		
+		// Including vehicle's class. '../../' means we are backing up to the parent directory (master dir).
+		include_once '../../class_vehicle.php';
+		$vehicle = new VEHICLE($MYSQL_HANDLE); // Creating a new CLASS object and storing it into $vehicle variable.
+		
+		// Asking database to get number plate of the vehicle and store the results into $result variable.
+		$result = $MYSQL_HANDLE->query("SELECT `numplate` FROM `vehicles` WHERE `numplate` = '".$numplate."'");
+		$row = $result->fetch_assoc();
+		if($row['numplate'] == $numplate) 
+		{
+			echo("ERROR: That vehicle has been registered before!");
+		}
+		
+		else
+		{
+			// If vehicle's registration number (number plate) hasn't been found in the database, we are calling a addVehicle function with the reference parameters for the class object created before ($vehicle).
+			$vehicle->addVehicle($numplate, $make, $model, $engine, $mileage, $year, $color, $bodytype, $doors, $fueltype, $geartype, $price);
+		}
+	}
+?>
+```
+
+HTML:
+--- pretty much self-explanatory here, a simple form to be shown user to enter details about vehicle.
+![SignUp](/master/images/addstock.jpg)
