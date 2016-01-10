@@ -7,7 +7,7 @@ This is more advanced system that I had to develop as my assignment back in UK w
 - Basic maintain functions such as: add, amend, delete, view etc.
 - Different permissions depending on the admin (user's) level.
 - Folder creation & removing (with functionality to remove folders which contain data in it).
-- Dynamic navigation bar creation.
+- Dynamic navigation bar creation (with two CSS styles to be chosen).
 - String processing.
 - Objective programming.
 
@@ -38,6 +38,7 @@ PRIMARY KEY (`uid`)
 ```
 
 2. Vehicle table list:
+
 ```
 CREATE TABLE IF NOT EXISTS `vehicles` (
 `uid` int(11) NOT NULL AUTO_INCREMENT,
