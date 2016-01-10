@@ -6,9 +6,10 @@ This is more advanced system that I had to develop as my assignment back in UK w
 - User login system, sign in & sign up using database (with password hashing).
 - Basic maintain functions such as: add, amend, delete, view etc.
 - Different permissions depending on the admin (user's) level.
-- Folder creation with removing functionality including removing folders which contain data in it.
+- Folder creation & removing (with functionality to remove folders which contain data in it).
 - Dynamic navigation bar creation.
-- objective programming.
+- String processing.
+- Objective programming.
 
 # Database
 ___________________________________
@@ -37,5 +38,22 @@ PRIMARY KEY (`uid`)
 ```
 
 2. Vehicle table list:
-*still editing everything to get ready*
+```
+CREATE TABLE IF NOT EXISTS `vehicles` (
+`uid` int(11) NOT NULL AUTO_INCREMENT,
+`numplate` varchar(12) NOT NULL,
+`make` varchar(12) NOT NULL,
+`model` varchar(12) NOT NULL,
+`engine` float NOT NULL,
+`mileage` float NOT NULL,
+`year` smallint(6) NOT NULL,
+`color` varchar(20) NOT NULL,
+`bodytype` varchar(12) NOT NULL,
+`doors` tinyint(4) NOT NULL,
+`fueltype` varchar(12) NOT NULL,
+`geartype` varchar(12) NOT NULL,
+`price` mediumint(8) NOT NULL,
+`description` text NOT NULL,
+PRIMARY KEY (`uid`)
+```
 
