@@ -73,7 +73,7 @@ This part is pretty much self descriptive. It is holding our Database informatio
 https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/config.php
 
 -
-**SIGN IN & SIGN UP**
+**SIGN IN, SIGN UP, SIGN OUT**
 
 User object class: https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/class_user.php
 
@@ -137,6 +137,18 @@ NOT all the fields are necessary to be insterted when signing up, some of them c
 This whole system is based on the SQL language, so all the accounts are automatically created in our database which was described at the very beginning of the whole ReadMe file. It is a dynamic user login and register system. Picture below is showing created users in database.
 ![userDB](/master/images/usersdb.jpg)
 
+https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/logout.php
+<?php
+	include_once 'config.php';
+	
+	// Check if our object (user) is logged in and if he has a parameter "logout" set to "true" in a URL bar. If so, proceed to the log out function and redirect them to the sign in page.
+	if($user->IsUserLoggedIn() && $_GET['logout'] == true)
+	{
+		$user->logout();
+		$user->redirect('signin.php');
+	}
+?>
+
 -
 **HOME PAGE**
 
@@ -165,8 +177,7 @@ $row = $result->fetch_assoc();
 ?>
 ```
 
-Navigation bar object class:
-https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/class_navbar.php
+Nav. bar object: https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/class_navbar.php
 ```
 /* Default website's navigation menu which holds Home, News, Contact and About pages. Maintain stock webpage is only shown for user with certain access level. It can be clearly read from the array below. */
 
