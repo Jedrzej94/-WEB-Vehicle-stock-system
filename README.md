@@ -351,6 +351,60 @@ PHP:
 ?>
 ```
 
+class function:
+```
+public function addVehicle($numplate, $make, $model, $engine, $mileage, $year, $color, $bodytype, $doors, $fueltype, $geartype, $price)
+{
+	// First we are converting user's number plate input into UPPER CASE text.
+	$numplateEx = strtoupper($numplate);
+	
+	// And we store this object ($vehicle) into our database field with data given by user. Data was passed by reference, where the function was called.
+	$this->db->query("INSERT INTO `vehicles` (`numplate`, `make`, `model`, `engine`, `mileage`, `year`, `color`, `bodytype`, `doors`, `fueltype`, `geartype`, `price`) VALUES ('".$numplateEx."', '".$make."', '".$model."', '".$engine."', '".$mileage."', '".$year."', '".$color."', '".$bodytype."', '".$doors."', '".$fueltype."', '".$geartype."', '".$price."')");
+	
+	// Checking if directory with the number plate exists in the 'images' folder.
+	if(!is_dir("images/$numplateEx"))
+	{
+		mkdir("images/$numplateEx");
+	}
+	
+	// This is where the images of the vehicle are stored and loaded by the different class functions such as print/search etc.
+	$upload_dir = "images/$numplateEx/";
+	
+	// Checking multiple images loaded by user to be uploaded to the server.
+	foreach($_FILES['inp_image']['name'] as $name => $value)
+	{
+		$filename = stripslashes($_FILES['inp_image']['name'][$name]);
+		$extension = getExtension($filename);
+		$extension = strtolower($extension);
+		
+		// Extension security check, if it's different than one of the below extensions we can make user stop there and force program to quit.
+		if(($extension != "jpg") && ($extension != "jpeg") && ($extension != "png") && ($extension != "gif")) 
+		{
+		}
+		
+		else
+		{
+			$size = filesize($_FILES['inp_image']['tmp_name'][$name]);
+		}
+		
+		// Copying file(s) to the folder.
+		$image_name = $filename.'.'.$extension;
+		$newname = $upload_dir.$image_name;
+		$copied = copy($_FILES['inp_image']['tmp_name'][$name], $newname);
+		
+		// Checking if there were any problems regarding file(s) upload. We can send message or anything we wanna do if files weren't uploaded below.
+		if (!$copied) 
+		{
+			
+		}
+	}
+}
+```
+
 HTML:
 --- pretty much self-explanatory here, a simple form to be shown user to enter details about vehicle.
 ![SignUp](/master/images/addstock.jpg)
+
+
+* *AMEND* (https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/pages/vehicles/amendstock.php)
+Amend code is using pretty much the same code as ADD but with only difference that we are reading data from database and INSERTING it into fields for user to be changed.
