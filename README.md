@@ -56,5 +56,6 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
 `price` mediumint(8) NOT NULL,
 `description` text NOT NULL,
 PRIMARY KEY (`uid`)
+)
 ```
 
