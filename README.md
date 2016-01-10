@@ -68,6 +68,7 @@ They are necessary in order to make the whole script work.
 ___________________________________
 
 **DATABASE CONNECTION**
+
 This part is pretty much self descriptive. It is holding our Database informations where we have to connect and it also is creating a new object USER with the session start. Which means user has logged in and is ready to surf the webiste.
 
 https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/config.php
@@ -116,6 +117,7 @@ public function login($uname, $upass, $umail)
 }
 ```
 
+-
 *SIGN UP* (https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/signup.php)
 
 If user doesn't have an account he's going to need one. In order to get to this webpage, user will have to press a referece text under sign in form and will get redirected to the signup webpage.
@@ -140,6 +142,7 @@ NOT all the fields are necessary to be insterted when signing up, some of them c
 This whole system is based on the SQL language, so all the accounts are automatically created in our database which was described at the very beginning of the whole ReadMe file. It is a dynamic user login and register system. Picture below is showing created users in database.
 ![userDB](/master/images/usersdb.jpg)
 
+-
 *SIGN OUT* (https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/logout.php)
 ```
 <?php
@@ -224,7 +227,7 @@ class class_UserNavigationMenu
 };
 ```
 
-* HTML part
+* HTML
 ```
 <head>
 <meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
@@ -273,7 +276,7 @@ class class_UserNavigationMenu
 </html>
 ```
 
-File including is a great feature if you don't want your page to be reloaded and just want to keep your files nice and clean. What I mean by that, here we have a DRY programming rule which stands for Don't Repeat Yourself. A great thing about that is we don't have to create the navigation bar for each webpage anymore, we can just simply do:
+File including is a great feature if you don't want your page to be reloaded and just want to keep your files nice and clean. What I mean by that, here we have a **DRY** programming rule which stands for **Don't Repeat Yourself**. A great thing about that is we don't have to create the navigation bar for each webpage anymore, we can just simply do:
 
 ```
 <body>
@@ -292,4 +295,14 @@ https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/p
 for each of our webpages. Image below to show how it looks like in action:
 ![SignUp](/master/images/home.jpg)
 
+-
+**STOCK MAINTENANCE**
 
+Stock maintenance is a Administration feature that is allowing him to either Add, change, delete and do other things to the vehicle's database at the website. 
+
+https://github.com/Jedrzej94/-WEB-Vehicle-stock-system/blob/master/master/main/pages/vehicles/mainstock.php
+
+This file has pretty much the same code as index.php, it had to be done again because of the administrator privileges and the second navigation menu.
+
+-
+**ADD - AMEND - DELETE - SEARCH - PRINT**
