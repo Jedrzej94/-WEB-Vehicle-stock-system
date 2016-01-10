@@ -130,7 +130,21 @@ NOT all the fields are necessary to be insterted when signing up, some of them c
 This whole system is based on the SQL language, so all the accounts are automatically created in our database which was described at the very beginning of the whole ReadMe file. It is a dynamic user login and register system. Picture below is showing created users in database.
 ![userDB](/master/images/usersdb.jpg)
 
+**HOME PAGE**
 
+As soon as we get signed in, we are getting redirected to the main website, which is a home page. At home page we are given a FIXED navigation menu and a FIXED top bar which has some functions on the left and the right side. A good thing about fixed menu's is that whenever user's scrolling down the page, menu is always going to stick on the screen and it won't move anywhere from there. So it is easier for user to navigate through the website.
+
+```
+/* Default website's navigation menu which holds Home, News, Contact and About pages. Maintain stock webpage is only shown for user with certain access level. It can be clearly read from the array below. */
+
+$menu = array(
+  'home'  		=> array('text' => 'Home',  			'url' => '?p=home',			'pageaccesslvl' => '0'),
+  'news'  		=> array('text' => 'News',  			'url' => '?p=news',			'pageaccesslvl' => '0'),
+  'contact'  	=> array('text' => 'Contact',  			'url' => '?p=contact',		'pageaccesslvl' => '0'),
+  'about' 		=> array('text' => 'About', 			'url' => '?p=about',		'pageaccesslvl' => '0'),
+  'mainstock'	=> array('text' => 'Maintain stock',	'url' => '?p=mainstock',	'pageaccesslvl' => '1'), // Required access level: 1 (administrator of level 1).
+);
+```
 
 
 
