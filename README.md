@@ -59,4 +59,4 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
 PRIMARY KEY (`uid`)
 )
 ```
-![My image](raw.github.com/Jedrzej94/-WEB-Vehicle-stock-system/master/images/addstock.jpg)
+![My image](/master/images/addstock.jpg)
