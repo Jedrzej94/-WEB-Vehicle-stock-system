@@ -59,4 +59,3 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
 PRIMARY KEY (`uid`)
 )
 ```
-
