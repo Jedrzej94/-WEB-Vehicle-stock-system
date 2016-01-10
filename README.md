@@ -6,6 +6,8 @@ This is more advanced system that I had to develop as my assignment back in UK w
 - User login system, sign in & sign up using database (with password hashing).
 - Basic maintain functions such as: add, amend, delete, view etc.
 - Different permissions depending on the admin (user's) level.
+- Folder creation with removing functionality including removing folders which contain data in it.
+- Dynamic navigation bar creation.
 
 # Database
 ___________________________________
