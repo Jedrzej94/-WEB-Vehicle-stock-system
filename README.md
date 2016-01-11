@@ -8,11 +8,16 @@ This is more advanced system that I had to develop as my assignment back in UK w
 - Basic maintain functions such as: add, amend, delete, view etc.
 - Different permissions depending on the admin (user's) level.
 - Folder creation & removing (with functionality to remove folders which contain data in it).
-- Dynamic navigation bar creation (with two CSS styles to be chosen).
+- Dynamic navigation bar creation (with two CSS styles to be chosen from).
 - String processing.
 - PHP procedures with PHP super-global variables.
 - Security functions such as trim, strip etc.
 - Objective programming.
+
+
+**NOTE**:
+
+Code that I have developed was ugly and done in a very horrible way, it was my beginning with PHP programming so I have decided to write whole system from scratch. PLEASE keep in mind, that I wasn't taught OOP in school and I had to learn it on my own. It was pretty much my own experience from C programming.
 
 # Database
 ___________________________________
