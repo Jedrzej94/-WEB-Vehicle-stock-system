@@ -19,7 +19,7 @@ This is more advanced system that I had to develop as my assignment back in UK w
 
 Code that I have developed was ugly and done in a very horrible way, it was my beginning with PHP programming so I have decided to write whole system from scratch. PLEASE keep in mind, that I wasn't taught OOP in school and I had to learn it on my own. It was pretty much my own experience from C programming.
 
-# Database
+# To begin with...
 ___________________________________
 
 First of all, you will need your database sorted, please download WAMP or LAMP server depending on your current operating system. You can find server downloads below.
@@ -69,7 +69,7 @@ PRIMARY KEY (`uid`)
 
 They are necessary in order to make the whole script work.
 
-# Description
+# System description
 ___________________________________
 
 **DATABASE CONNECTION**
