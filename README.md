@@ -3,17 +3,16 @@ ___________________________________
 This is more advanced system that I had to develop as my assignment back in UK when I have lived there. It is a WEB vehicle system, which is including:
 
 - Databases (accounts, vehicles).
-- DRY - programming rules.
+- Programming rules such as: DRY.
 - User login system, sign in & sign up using database (with password hashing).
 - Basic maintain functions such as: add, amend, delete, view etc.
 - Different permissions depending on the admin (user's) level.
-- Folder creation & removing (with functionality to remove folders which contain data in it).
-- Dynamic navigation bar creation (with two CSS styles to be chosen from).
+- Folder creation & removing (with custom function to remove folders which contain data in it).
+- Dynamic webpages (?=) AND Dynamic navigation bar creation (with two CSS styles to be chosen from).
 - String processing.
 - PHP procedures with PHP super-global variables.
 - Security functions such as trim, strip etc.
 - Objective programming.
-
 
 **NOTE**:
 
